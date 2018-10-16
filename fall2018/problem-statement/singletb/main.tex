@@ -1,0 +1,61 @@
+\documentclass[10pt,peerreview]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[left=0.75in, right=0.75in, bottom=.75in, top=.75in]{geometry}
+
+\title{Ninkasi Brewing Problem Statement}
+\author{Bailey Singleton \\
+        October 11, 2018}
+\date{October 11, 2018}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    Ninkasi Brewing wants to improve upon their current process of tracking the cycle of brewing. It currently entails a lengthy process with lots of human interaction to get information from the beer to the site. We would like to improve this process to eliminate almost all human interaction with the program, and to improve upon the interface we have been provided. Currently it is a website that is unorganized, and lacking features that make sense. Our goal is to create a website that is intuitive, easy to manage, and feature-rich to our client's specification.
+\end{abstract}
+
+\clearpage
+
+\section{Problem}
+    Ninkasi Brewing, located in Eugene Oregon, wants an efficient way to track their beer while it is being brewed. For the past two years, they have joined on as a Senior Capstone project to contract students to build an easy interface for their goal. As of now, the brewers of Ninkasi go through a lengthy process to keep track of their beer and take measurements for it.
+    Currently, they have about 15 fermenters, that hold roughly 131,400 pints each. They brew many different beers, ranging from their usual crowd-pleasers to any seasonal or experimental beers. Keeping track of all these different beers at different cycles, while also maintaining the standard that Ninkasi strives to reach, can be very difficult. 
+    As of now, their system for tracking is a website that was created by previous OSU seniors. The process is as follows: x
+\begin{itemize}
+    \item Brewers start the process of fermenting. They may make one batch that takes up multiple fermenters. It is all considered the same batch.
+    \item Scientists take samples from the fermenters, and take them to a machine that runs tests on their gravity, pH, alcohol content, and other beer metrics.
+    \item This machine spits out data into an Excel format.
+    \item The scientist takes this data, types it into another, larger Excel spreadsheet, and updates all relevant fields.
+    \item This spreadsheet is then mailed to the rest of the team.
+    \item Somebody then goes to the current site, and updates the fermenter data with the new information.
+\end{itemize}
+This process is repeated for each fermenter, weekly.\\
+
+On top of this, there are many problems with their current situation that will need to be remedied. After speaking with our client, we have gathered some things that they would like improved, added, and fixed. 
+    
+\subsection{Improve}
+The biggest improvement we would like to achieve, is the way that data is entered into the system. The process is rather clunky, and we think that we could very well streamline this process. Using some modern programming languages that are good with dealing with comma separated values, such as Python, we could convert the Excel data into usable data packages that can be sent to the site.
+From there, the site can see that new data is trying to be added, and update accordingly using some database queries and functionality. We would most likely use some form of SQL to handle the database. this would be the most major improvement we would like to make to their current work flow.
+
+Other improvements that our client requested would be on the website. Currently, they are not too happy with how the site works and functions. There are some issues with how time is tracked when edits are made. It is not completely accurate and they would like that fixed.\\
+The admin page is not laid out how they would like, and doesn't have all the functionality they would like. Things like adding fermenters or editing past data are not there completely. The tank info page layout is not great, and they would like to be able to add colors to color-code their machines. Right now it is a grid that isn't in any order and is not very easy to figure out what is going on. 
+
+\subsection{Adding to the Site}
+    Our client would like us to add more functionality to the site, and have it provide greater detail for the scientists. First, Ninkasi would like to have a history section, that shows all the past samples and edits that have been made to each tank. This is to ensure that all tanks are being maintained and properly tested. They would like to have this not only for each batch they make, but also for each individual fermenter. \\
+    As of now, editing the status of each Tank is rather bulky, and not easy as it should be. This is a part of the process that happens often, and Ninkasi would like us to make it easier for them to change the status.\\
+    
+    Ninkasi would also like us to add additional tank data properties. Things such as hop information, and dry hopping rate have been left off, and they would love to have this information available to them. Fermentation curves are another thing that they are looking to implement into the site. 
+    
+    Lastly, they would like to give those who are not admins the ability to start a new batch, and also be able to remove a tank if one is added accidentally or if something were to go wrong in the process.
+\subsection{Broken Pieces}
+    The website is mostly functional, yet the ability to log in with a user-made account doesn't seem to function. This will definitely need to be fixed, as they are currently all logging in as the same account. This does not allow for history to be tracked, on who does what parts of updating or editing. 
+    
+\section{Solutions via Tools and Technology}
+    \subsection{Testing Process}
+        What we noticed is the process that the scientists go through to record and track all of their metrics is extremely clunky. Automating the process will allow for less human error, and will save them a lot of time where it could be spent elsewhere, like creating new ideas and innovative solutions for their brews. A lot of this will be handled through scripting languages, and while we are not certain what we will use yet, it will probably be something along the lines of Python or something similar. There are many great tools to take data and put it in a way that is easy for a site to read and update.
+        
+    \subsection{Website}
+        The website they have is by no means modern. Often times, things are thrown together in ways that work, but are not the most practical solutions. We would like to change their site from a basic HTML/CSS website and turn it into a more cohesive, professional experience. Using modern tools like Facebooks's React and combining this with Typescript will create an easier experience for future development, but allow us to deliver more complete tools in a quicker fashion. Being able to reuse components, or parts of code all across the site will allow us to create an experience of industry standard.\\
+        This front-end will most likely be hooked up to a PostgreSQL database to query for data about the fermenters and tanks. This way we can have the front-end worry about delivering good data to the scientist, while leaving the back-end to worry about updating the code.\\
+
+\end{document}
