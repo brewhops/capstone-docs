@@ -1,0 +1,14 @@
+#ignore PDF's while we are working on them
+#PDF's can still be pushed and should be when they are at a major working version
+*.pdf
+
+# ignores for latex intermediate files
+*.fls
+*.out
+*.aux
+*.gz
+*.toc
+*.log
+*.fdb*
+*.bbl
+*.blg
