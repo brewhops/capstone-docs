@@ -1,0 +1,69 @@
+\documentclass[draftclsnofoot,onecolumn,journal,letterpaper,10pt]{IEEEtran}
+\usepackage{geometry}
+\usepackage{setspace}
+
+\geometry{letterpaper, margin=.75in}
+\singlespace
+
+\begin{document}
+
+% Title Page + Abstract
+\begin{titlepage}
+    \title{Problem Statement\\\large CS 461 Fall 2018 \\ October 17, 2018}
+    \author{
+        Brennan Douglas \\
+        \texttt{douglbre@oregonstate.edu} \\
+        \and
+        Dan Van Horn \\
+        \texttt{vanhornd@oregonstate.edu} \\
+        \and
+        Henry Peterson \\
+        \texttt{peterhen@oregonstate.edu} \\
+        \and
+        Bailey Singleton \\
+        \texttt{singletb@oregonstate.edu} \\
+    }
+    
+    \maketitle
+    \begin{abstract}
+        During the brewing of a specific batch of beer there are many variables that need to be tested and tracked. This helps determine when the beer is ready and how it compares to other batches. Ninkasi --- a brewery in Eugene, Oregon --- is using a single large excel spreadsheet to track and store all their information. As they grew this began increasingly unwieldy.  There is already the beginning of a solution which includes a small set of applications designed to manage this data automatically while allowing for editing and visualization.  This system will manage brewing data and user permissions to reduce the possibility for human error.  The system needs to be hosted on a cloud provider and designed to be both desktop and mobile compatible.
+    \end{abstract}
+\end{titlepage}
+
+
+
+\section{Problem Statement}
+Brewing data is recorded at Ninkasi Brewing in Excel spreadsheets and other paper methods and is commonly shared through email. This process relies heavily on manual data entry which is time consuming, prone to error, and can result in the loss of crucial data. The data stored in Excel is not structured in such a way as to allow for any valuable business or brewing insight to be gained from it. The current growth rate of the company calls for a systematic, automated approach to handling brewing data and that it be accessible to more than a few people.
+
+There is an existing solution from a previous capstone team, but from a developer perspective, the code contains apparent bugs, organizational issues, and still falls short of addressing the company’s needs in some key areas. Some of the data is misrepresented, and there are certain metrics that are not being collected over time. We will need to fix these existing problems as well as address the original issue and add new features.
+
+\section{Proposed Solution}
+Ninkasi has requested that we prepare the existing application for production. It is currently composed of multiple applications. The first application is a website that is both mobile and desktop compatible, this reduces the overhead for maintaining both a mobile and desktop application. The site will display the status of the fermenters, automatically updating throughout the brewing process, as well as generating graphic visualizations of the data over time. The second application is a web server that interfaces with the site and securely provides it with brewing data --- given the user is properly authorized. It also communicates to a database which will contain all the brewing data which can efficiently create, read, update and delete entries. The site, server, and database will be their own separate nodes running in an environment hosted by a cloud provider that will be determined later. 
+
+There are a number of issues that need to be fixed and features they would like added. A current hole in the design exists where all data must be imported by hand, point by point.  As they already have a large backlog of data --- many years worth --- stored in several large excel spreadsheets they have requested a feature to submit these sheets and import the data from them.  This will require the addition of a new page with the option to upload an excel spreadsheet.  It would potentially need to include configuration information to extract the data from the sheet if needed. Another issue is the layout of the site and who has access to specific sections. The administrator controls for the site will be overhauled to make the system more flexible and non-administrator functionality will be created to increase the user base. For new additions, we will add data visualization integrated directly in the app. Currently, they can view it in an external context, but including it will make it a more comprehensive experience.
+
+Improvements to the development and deployment life cycle of the application need to be made as well. Currently, the application is written using standard JavaScript and React.  We suggested that they migrate this to using TypeScript as React works very well in this environment.  Also, half of the old application was configured to use docker to run.  This lacked the full proper configuration still managing to fail to run sometimes, even when docker is installed. We will update this to make running the application a painless procedure. This will more easily allow Ninkasi to maintain the application. Another blow to the development process is the lack of tests. Implementing proper testing will ensure to us that we are writing quality code and those viewing it in the future will also be able to have confidence in its quality.
+
+\section{Performance Metrics}
+
+The intention of this project is to create a working prototype that can go into a beta stage of testing. The team from last year provided justification to Ninkasi that further development is warranted and they have expressed the desire to continue and add more features to meet their business needs. 
+
+The first milestone that will need to be completed will be to update the current system and fix all the bugs and issues that Ninkasi made us aware of. This stage will include creating development operations and testing procedures that will assist the team in adding future features. It will not directly impact the performance of the system but will reduce the time needed to implement the new features.
+
+Next, we will be implementing the new features that were requested. At this point we expect to have the project specifications finely tuned and a thorough understanding of the complete system. We will remain flexible as requirements can, and most like will, change as time goes on. After the new feature implementation, we will be exploring the viable options for Ninkasi to do a beta release of the system and a cost benefit analysis on the different hosting options available.
+
+Similarly with the new features, the performance metric will be the application features working according to the documented methods agreed upon.  It is important that it is documented, agreed upon, and effectively "sealed" as that will be our endpoint; we don't want that moving on us.  One feature will be the excel file import.  The performance metric here will be loading up the web page, uploading an excel spreadsheet, and showing that its data has been input into the system.  These types of features are easy quantify as they work with Ninkasi's excel sheets or they don't, a simple test will be performed.
+The project will be complete when we have addressed Ninkasi�s concerns with the original system, the new features have been implemented, and the system has been deployed to a cloud provider. Depending on the completion of this stage, we may be able to add another phase to address feedback from Ninkasi again. It’s too early to speculate that far ahead, but we expect to have a lot of communication with Ninkasi throughout the year to make sure we are building the right system for them. 
+
+
+
+
+
+
+
+% References
+%\cite[Sec 3.8]{freebsd}
+%\bibliographystyle{IEEEtran}
+%\bibliography{./ref}
+
+\end{document}
