@@ -1,0 +1,100 @@
+
+\subsection{API Documentation}
+
+\subsubsection{Purpose of API}
+The general purpose of the API is to keep track of how a batch of beer is being brewed over time. There are some peripheral information pieces such as employees that are working on the system, the tanks that the batches are being brewed in, actions associated with those tanks, and the recipes for a brew.
+
+\subsubsection{Requirments}
+\begin{itemize}
+    \item npm
+    \item Docker
+    \item Docker Compose
+\end{itemize}
+
+\subsubsection{Startup}
+Both development and production environments require the use of a .env file to get environment variables. This .env file should never be committed, you can rename the example.env file in the project to .env and it will work. It contains the following environment variables
+
+\begin{itemize}
+    \item PGUSER --- The PostGres username
+    \item PGDATABASE --- The PostGres database name
+    \item PGPASSWORD --- The PostGres database password
+    \item PORT --- The Port that the database connects to
+\end{itemize}
+
+\noindent
+For more information on the PG environment variables, check out the official postgres docker container docs (\href{https://hub.docker.com/_/postgres/}{https://hub.docker.com/_/postgres/}).
+
+\subsubsection{Development}
+\begin{enumerate}
+    \item 'cp example.env .env' will enable the default configuration.
+    \item 'npm i' will install all of the dependencies.
+    \item Run 'npm run watch-ts' in a different terminal, this will trigger the typescript compiler to watch the source files for changes and re-transpile them.
+    \item 'npm run build-images' will run 'docker-compose', build new images, and run the api.
+    \item 'npm run dev' will run 'docker-compose', and run the api.
+\end{enumerate}
+
+\subsubsection{Postman}
+The postman collection at the root of this repo contains documentation for all of the avaiable api endpoints.
+
+\subsubsection{Test Data}
+Once the application has started the init-live endpoint needs to be hit to initialize the test data for the application. Once hit (after success) this can take between 10 seconds to a minute to load all of the data. The following curl command can be used to hit the endpoint:
+\begin{verbatim}
+    curl -X POST http://localhost:3000/init-live
+\end{verbatim}
+Or, postman could also be used to hit this endpoint instead of the curl command.
+
+\subsubsection{Checking the database (manually)}
+To connect to the docker container and interact directly with the database, follow these steps. {\bf NOTE}: for the automatic psql instance check the npm commands section.
+\begin{enumerate}
+    \item Start up the postgreSQL docker container if it is not already running
+    \item Open up a terminal window
+    \item 'docker ps' to get the name of the running DB docker container
+    \item 'docker exec -it {name of DB container} bash -l'
+    \item 'psql -U {PGUSER} -d {database name}'
+\end{enumerate}
+
+\noindent
+You should now be logged into the psql program on the docker container.
+
+A few things to note:
+\begin{itemize}
+    \item every line must either start with a {\textbackslash} or end with a ;
+    \begin{itemize}
+        \item eg. \textbackslash dt shows all database tables
+        \item eg. SELECT * FROM actions; selects everything from the actions table
+    \end{itemize}
+    \item \textbackslash q to quit the psql shell
+    \item exit to exit the docker container
+\end{itemize}
+
+\subsubsection{npm commands}
+\begin{itemize}
+    \item {\bf dev}: starts the development docker environment. This mounts the project to the docker container and then runs nodemon. For this to work, your local node version (the one used to run 'npm i') must be version 11 as well.
+    \item {\bf build-images}: rebuilds the dockerfiles that are defined in the docker compose file.
+    \item {\bf dev-psql}: this automatically connects you with a psql instance to the development database (only if running).
+    \item {\bf test}: runs the current tests.
+\end{itemize}
+
+
+\subsection{Web Application}
+A web app to allow ninkasi brewing to better track and manage brewery data
+
+\subsubsection{Build Setup}
+\begin{minted}[
+    xleftmargin=18pt,
+    linenos,
+    autogobble,
+    breaklines,
+]{bash}
+    # install dependencies
+    npm install
+    
+    # serve with hot reload at localhost:8080
+    npm run dev
+    
+    # build for production with minification
+    npm run build
+    
+    # build for production and view the bundle analyzer report
+    npm run build --report
+\end{minted}

@@ -1,0 +1,62 @@
+\section{Introduction}
+We are continuing development on an existing solution from a previous capstone group. It includes a small set of applications designed to manage brewing data automatically, allow for manual user editing, and generate graphic visualizations. This system will manage brewing data quickly, efficiently, and correctly as it will reduce the possibility for human error. The applications will be hosted on a cloud provider and be both desktop and mobile compatible. Each developer role in the project is to be adaptable and familiar with the entire technology stack we are implementing.
+\section{Front End}
+The state of web application development has moved past serving static html pages, style sheets, and JavaScript. With the demand for dynamic content and more user features, there has been significant advancement in front-end frameworks that can be developed in a more readable language and allows for the creation of dynamic web applications. These frameworks use a process called transpilation to transform the source code into a bundled application that can be executed by all modern browsers. This is one of the criteria for a Progressive Web Application which would be a benefit for Ninkasi because they plan to use this application cross platform with possibly unreliable internet connection. From a project perspective, the use of these frameworks has the benefit of quicker development, superior code modularity, and testability. The existing front-end application is written in Vue.js, one of the frameworks we review for its practical applicability among other potential candidates.
+    \subsection{React}
+    React is a front-end framework developed by Facebook and one of the most popular libraries used in industry today. It uses a quicker virtual DOM instead of the traditional DOM which increases performance and can be rendered on clients and on servers. It encourages the developer to utilize reusable UI components that are dynamic. Data flows unidirectionally through these components, which makes the application easier to reason about and avoids unintended side effects during runtime. 
+    
+    The front-end logic can be written in JavaScript and use a templating language called JSX to build the app views. There is a slight learning curve to the React style of programming, but many engineers clearly prefer this technology as it is the top-ranking technology in terms of engineers that have used it before and would use it again \cite{stateofjs2017}.
+
+    \subsection{Vue}
+    Vue is a similar technology to React in that it is primarily concerned with the front-end aspect of the application. It was developed and is maintained by an international community of software engineers. Like React it also utilizes a virtual DOM, promotes the use of composable reusable components and allows for other libraries to be integrated with ease. One main difference is that in Vue, the use of the JSX templating language is unnecessary and html can be used instead. JSX is an option with Vue as a plugin, so in some ways that is a major advantage. 
+    
+    There are no major performance advantages between the two however, so the real decision come down to the preference of the coding syntax. As huge benefit to Vue is the concept of single file components. These components contain the template, logic and style for a section of the application \cite{vue}. This simple organization is a huge advantage and is no doubt one of the reasons why the previous group that worked on this project chose it as their front-end framework. Although it is not as widely used, many engineers in the industry are excited about Vue and among those who have not used it, they have expressed interest in learning it \cite{stateofjs2017}.
+
+    \subsection{Preact}
+    Yet another similar framework to the two previously described is Preact; a lighter library (just over 5kb) and is, in some ways more, a simplified version of React. The programming paradigm used is the same as React so experienced developers would find this an easy transition. As a smaller library, it excludes pieces of React that are not commonly used and simplifies other aspects. Using Preact in this project could guarantee that the app was the smallest size possible and that any additional functionality necessary is completely modular and attachable \cite{preact}.
+    
+    Another positive aspect of Preact, although not in Ninkasi's use case, is that it can be substituted for an existing React app very easily, reducing the application size while performance stays the same. There are many large companies and open source organizations that use this technology, so it is surely vetted and reliable.
+    
+    \subsection{Recommendation}
+    The application is already written in Vue and it will be much easier for the team to meet the project goals if we don't have to re-write the existing code. A few team members have some experience with Vue and it is unlikely to be deprecated for a long time. The previous team's decision was well founded with this technology and it is only logical that development continues from where it left off.  
+
+\section{Style}
+Style governs how the content is displayed to the user and is arguably the most important part of user experience. This area should be considered with special care because it must meet the needs of the user and be intuitive. There have already been some issues raised around how things are being displayed on the current application and those issues are more pressing because they are the most visible.
+    \subsection{CSS}
+    Cascading Style Sheets, or CSS, is natively understood by modern web browsers and was first developed in 1994. This technology governs how html elements are laid out and styled on the display. No matter which technology we use, it will all end up turning into CSS in the end \cite{css}. 
+    
+    One major benefit to this technology is how well is integrates with Vue. Vue can take the CSS written in single file components and apply those style scoped to those components only. With a cursory understanding of CSS, the task of styling an application becomes much easier. This ability is not limited to Vue as React has this ability as well, but it is not built into the library by default. Special care will need to be given to ensure browser and mobile compatibility but that is no different than any other modern web application.
+
+    \subsection{Less}
+    Less stands for Leaner Style Sheets and is a preprocessor language that is compiled into CSS. A big advantage of Less is the ability the create variables that are reusable and the ability to scope style definitions in a much easier way than CSS provides with it’s selectors. Sheets can be imported so that style definitions may be further reused \cite{less}. 
+    
+    This technology would be beneficial if there was not an already established set of CSS stylesheets for this app that simply need to be refactored. We are not ruling out the possibility of using this technology, because it may be easier to implement the changes we need if we include this technology with the implementation.
+    
+    \subsection{SCSS}
+    SCSS stands simply for “Sassy” CSS and is a superset of the existing CSS language which means that every CSS stylesheet is already compatible with it. The syntax is terser than that of CSS and it uses indentation to indicate code blocks \cite{sass}. All the same features the Less has are present here as well and the benefit of refactoring a potentially complex set of stylesheets are present with this preprocessor. 
+    
+    \subsection{Recommendation}
+    In Vue styles can be applied on the component level, which allows much more granularity over how the app looks. Fortunately, this makes the styling language decision somewhat less critical, because it is fundamentally easier to write styles in this way. That said, the best option for this project is Less. The primary reason is that the syntax is such that it is much easier to reason about how style will apply to the app. Any technology that increases readability, maintainability and is easy to implement is a welcome addition to this project.
+    
+\section{Bundling}
+The end goal is to have an application that will run on any browser or mobile device and perform quickly. To do that we will have to make use of module bundlers and transpilers, because many of the newest technology features are not natively supported by browsers yet. They will take code and transform it into a minified version of a language that modern browsers can understand. Gone are the days where script tags had to included in order of dependencies, which had to make multiple requests back to the server. Now that process is simplified and much easier for browsers to load ad a "bundle". There are many applicable technologies and they all have varying degrees of configuration overhead. 
+    \subsection{Webpack}
+    Webpack is the most commonly used open-source module bundlers and is shipped as a dependency with many of the application bootstrapper programs for front-end frameworks. This means that often no configuration is necessary, and the application just runs. Other times, specific actions are needed during the build process or a certain library needs to be used that is not compatible. It is during these times that the technical overhead of webpack configuration becomes daunting.
+    
+    Of course, as with any widely used framework, the documentation, examples, and boilerplate code are widely available online. Depending on the complexity of the app, webpack could simply be left alone to do its job. The more time that can be spent on feature development and not bogged down by configuration, the better.
+
+    \subsection{Parcel}
+    Parcel aims to avoid the complex configuration known to webpack. Its syntax is much simpler, and it has support for all the other technologies mentioned in this review. Parcel takes an entry point file of type html or JavaScript and analyzes all the dependencies that are imported. It then does the same for each dependency until it has constructed an asset tree. The assets are then placed into a bundle tree which is optimized by joining common file dependencies. Finally, Parcel writes the bundled content to minified files with a packager specific to the file type \cite{parcel}.
+    
+    Parcel takes care of the entire transpilation on its own, while webpack requires the proper configuration to do so. That alone, is a huge advantage in using parcel. We could count on a reduction in development time because everything “works out of the box”. 
+
+    \subsection{Babel}
+    Babel is an open source transpiler for JavaScript. Webpack can use babel as a plugin to do its JavaScript transpilation. With this approach we lose the automated style pre-processing but that can be easily added as a separate build pipeline. The configuration for babel is very small because it only concerns itself with one language.
+    
+    The singular use of babel would increase the configuration overhead in this project but since the app already uses babel as a plugin for webpack, the team won’t have to worry about piecing together a build process for the project. Babel is much better served in this project as a webpack plugin.
+    
+    \subsection{Recommendation}
+    The Vue app is set up to use webpack for it's build process. It's inadvisable to completely change out a module bundler once a project has been established but it is not impossible. the best course of action is to stick with webpack. Some of the team members have some experience with webpack so if configuration changes are needed, it will cause little to no technical debt.
+
+\section{Conclusion}
+It's fortunate that a large portion of the project has been implemented already because it makes the choice of technologies somewhat easier. The selection is more limited, but the team agrees with most of the technologies chosen by the previous team. There are a few changes that we would like to make, although the front-end technologies will likely not be replaced. We're favoring developing new features within the technologies we agree with rather than spend time radically changing the front-end. \\

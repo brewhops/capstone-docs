@@ -1,0 +1,341 @@
+\documentclass[draftclsnofoot,onecolumn,journal,letterpaper,compsoc,10pt]{IEEEtran}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titling}
+\usepackage{todonotes}
+\usepackage{minted}
+\usepackage{graphbox}
+\usepackage{titlesec}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{adjustbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT TOUCH THIS... unless you're careful :) ;] :D
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Defines \subsubsubsection & \subsubsubsubsection
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+\titleclass{\subsubsubsubsection}{straight}[\subsubsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+
+\newcounter{subsubsubsubsection}[subsubsubsection]
+\renewcommand\thesubsubsubsubsection{\thesubsubsubsection.\arabic{subsubsubsubsection}}
+
+\titleformat{\subsubsubsection}{\normalfont\normalsize\itshape}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titleformat{\subsubsubsubsection}{\normalfont\normalsize\itshape}{\thesubsubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\def\toclevel@subsubsubsection{4}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+
+\def\toclevel@subsubsubsubsection{5}
+\def\l@subsubsubsubsection{\@dottedtocline{5}{7em}{4em}}
+
+\makeatother
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\geometry{letterpaper, margin=.75in}
+\singlespace
+
+\title{Project Handoff\\\large CS 463 Spring 2018\\Group 19 BrewHops: Ninkasi Brewing, Automating the brewing process}
+\author{
+    Brennan Douglas \\
+    \texttt{douglbre@oregonstate.edu} \\
+    \and
+    Dan Van Horn \\
+    \texttt{vanhornd@oregonstate.edu} \\
+    \and
+    Henry Peterson \\
+    \texttt{peterhen@oregonstate.edu} \\
+    \and
+    Bailey Singleton \\
+    \texttt{singletb@oregonstate.edu} \\
+}
+\date{May 5th, 2018}
+
+\begin{document}
+
+\begin{titlingpage}
+    \maketitle
+    \begin{abstract}
+        During the 2018-2019 school year, our group has worked on a project with Ninkasi Brewing to write software for tracking data during the beer fermentation process. This is a compilation of our written work from the initial planning stages to reflections after completing the project.
+    \end{abstract}
+    \pagebreak
+    \tableofcontents
+\end{titlingpage}
+
+\section{Introduction}
+    The Brewhops project was requested by Ninkasi Brewing, based out of Eugene, Oregon. The brewery uses an old school method of tracking their brewing process. Excel spreadsheets being passed through email left Ninkasi wanting a more reliable, single-source site where all tracking information was stored together. The BrewHops application gave them that: a web application that allows for easy tracking and accountability across the entire brewing process. Joe Kleiber was our main client that we communicated with weekly, which allowed us to ask questions at almost any time of day. Constant feedback from Joe was critical to our success, as the BrewHops members could make decisions based directly off of the client's specifications. The members of the BrewHops team included Bailey Singleton, Dan Van Horn, Brennan Douglas, and Henry Peterson. Working off of a previous project started by a capstone team of the year prior, gave us a good starting point while also allowing us freedom to change the application to something better and more user friendly. 
+    % Who requested it?
+    % Why was it requested?
+    % What is its importance?
+    % Who was/were your client(s)?
+    % Who are the members of your team?
+    % What were their roles?
+    % What was the role of the client(s)? (I.e., did they supervise only, or did they participate in doing development)
+
+
+\newpage
+\section{Requirements Document}
+{
+    \let\section\subsubsection
+    \let\subsection\subsubsubsection
+    \let\subsubsection\subsubsubsubsection
+    \input{tex_files/requirements_document.tex}
+}
+
+\newpage
+\section{Design Document}
+{
+    \let\section\subsubsection
+    \let\subsection\subsubsubsection
+    \let\subsubsection\subsubsubsubsection
+    \input{tex_files/design_document.tex}
+}
+
+\newpage
+\section{Tech Reviews}
+
+\subsection{Brennan Douglas}
+{
+    \let\section\subsubsection
+    \let\subsection\subsubsubsection
+    \let\subsubsection\subsubsubsubsection
+    \input{tex_files/tech_review/brennan_tech_review.tex}
+}
+
+\subsection{Dan Van Horn}
+{
+    \let\section\subsubsection
+    \let\subsection\subsubsubsection
+    \let\subsubsection\subsubsubsubsection
+    \input{tex_files/tech_review/dvh_tech_review.tex}
+}
+
+\subsection{Henry Peterson}
+{
+    \let\section\subsubsection
+    \let\subsection\subsubsubsection
+    \let\subsubsection\subsubsubsubsection
+    \input{tex_files/tech_review/henry_peterson_tech_review_final.tex}
+}
+
+\subsection{Bailey Singleton}
+{
+    \let\section\subsubsection
+    \let\subsection\subsubsubsection
+    \let\subsubsection\subsubsubsubsection
+    \input{tex_files/tech_review/bailey_tech_review.tex}
+}
+
+\clearpage
+\newpage
+\section{Weekly Blog Posts}
+\input{tex_files/weekly_summaries.tex}
+
+\begin{landscape}
+    \section{Expo Poster}
+    \begin{center}
+        \makebox[\textheight]{\includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=0.8\paperheight]{Group19_BrewHops-poster_expo_48x36_eecs_final_v2.pdf}}
+    \end{center}
+\end{landscape}
+
+%\section{Expo Poster}
+%See next page.
+%\includepdf[pages=1, landscape]{Group19_BrewHops-poster_expo_48x36_eecs_final_v2.pdf}
+
+\newpage
+\section{Project Documentation}
+\input{tex_files/project_documentation.tex}
+
+\newpage
+\section{Recommended Technical Resources for Learning More}
+One aspect we looked at when choosing the various technologies we used was the amount of support and documentation they provided. All of the following were be helpful in understanding the specific section of the project they pertain to.
+\begin{itemize}
+    \item Database\\
+        PostgreSQL Documentation: \url{https://www.postgresql.org/docs/}
+    \item Server\\
+        Express.js Documentation: \url{https://expressjs.com/en/api.html}
+    \item Language\\ 
+        Typescript Documentation: \url{https://www.typescriptlang.org/docs/home.html}
+    \item Frontend\\ 
+        Vue.js Documentation: \url{https://vuejs.org/v2/api/}
+    \item DevOps\\ 
+        Docker Documentation: \url{https://docs.docker.com/}
+\end{itemize}
+
+Our best resource for understanding the brewing process and tracking fermentation data was our client themselves, Joe Kleiber.
+
+\newpage
+\section{Conclusion and Reflections}
+\subsection{Brennan Douglas}
+The project gave me the opportunity to work a lot more with JavaScript and Typescript than I traditionally get to at work.  This meant I got to work in a fully JavaScript environment and learn the basic practices that go along with that.  I also got to use Docker which I am always fond of as it simplifies the development process and gives a very clear understanding of what is required to run the project as it all has to be clearly stated in one or two places.
+
+As for what I learned on the non-technical side, it was nice to have more hands on experience with project planning from the very start.  I have had experience previously but it has only been on one or two projects.  Using a task board to plan and allocate specific tasks to specific people helped us a lot keep the work divided and under control so no one person was shouldering half the work.  This is part of project management as well, which as a team we all had a say in during our weekly meetings.  We keep a pace such that we would formally meet up once a week and redivide new work as we had completed the other weeks work.  This was only possible because we correctly broke down the tasks to a proper size.
+
+This team only reinforced in me that teamwork on projects is amazing when it is well planned and everyone has an equal stake.  Communication throughout the team was strong and quick which allowed non-technical blockers to be almost non-existent.  If I could do this all over again, the only thing that I would change are some technical details.  Specifically, our front-end framework.  I would have preferred to use a more state based approach to our single page application, ideally in the form of React instead of Vue.
+
+\subsection{Dan Van Horn}
+This project offered me an opportunity to better learn Vue as a front end framework and rank it among those I'd like to use in the future. I had some experience before translating small projects from normal Javascript to Typescript, but this project gave me much more experience that I can take directly into industry.
+
+On the non-technical and project management side, this project was a great chance to work on creating a long term plan and seeing it come to fruition. We rarely found ourselves behind if problems arose, because we heavily prioritized our planning phase. A good plan requires allocation of tasks, and the project was an opportunity to do this. Both of these skills are directly transferable to industry.
+
+I had a really great team that got along fairly well. We felt comfortable enough to talk through any issues or disagreements we had. I know some teams aren't always so good together, so the communication skills I learned in our team meetings will serve me well in the future. 
+
+If I could do the project again, I would have elected to use a different UI framework for the front-end. I think, in some ways, we exceeded expectations and could have taken on a few more ambitious goals like completely re-writing the front-end.
+\subsection{Henry Peterson}
+Some of the best technical knowledge I gained was about backend development. In most of the projects I've worked on before, the backend was already in place and was just something I interacted with. Seeing the process of refactors and updates to our backend made the process make more sense to me.
+
+Working with a client was an important non-technical skill for me. Typically school projects give little thought to how a non-computer science individual would interact with the result. Having to explain our process and reasoning to our client gave me a real-world taste of that and how being lazy could lead to confusion.
+
+Communication is maybe the most important part of working in a group. I've known this before, but the weight associated with the project really cemented it. In the fall, we were relatively disorganized and didn't communicate with our client as often as we should've. I'm very glad the we sat down, discussed, and improved our communication for the winter. I believe it was instrumental to the success of our project.
+
+If I could do this project again, I would've like to use a different front end technology. It was very nice to have it already partially implemented, but for some of my tasks like testing, it presented unseen difficulties. It was impossible to see from the planning stages, but given the information I have know, that what I would change.
+\subsection{Bailey Singleton}
+This project let me expand my technical skills in many areas. Most importantly was about the development of the backend and server setup. It was mystifying on how one would set up deployment and getting a server to deploy automatically. Using tools like Now and the Heroku database made this process very simple. 
+
+Working with a client was a skill that was something that I had to learn to handle effectively. It is much easier to talk to someone who already knows the technical details, so I would not have to relay the information in layman's terms. When the client wanted something, I had to take what they said and see how it translated back into the code. 
+
+Project work is takes a lot of time and effort that one doesn't see with normal school work. The time is split into different ways, and it doesn't ever really feel like the project or task is finished. Unlike with homework, there is definitely a point when the job is done. With managing a project, a lot of the success comes in the form of how well the members communicate with one another. Poor communication leads to wasted time that could be spent improving the project. This goes with working in a team on any sort of goal.
+
+If I could do it all over again, it would be in the front end development. Starting with a project that had some work done already made it hard to figure out exactly what was going on, as different minds had different ideas. I would probably go a completely different direction, instead of using Vue I would use React for our frontend. Other than that, there is not much I would change about the project.
+
+
+
+\section{Appendix}
+\subsection{Essential Code Listings}
+Converting the project to Typescript gave us the opportunity to explicitly declare interfaces that declare function return types, parameters and object properties. This was instrumental when the team used these functions because the IDE would show an error if there was a type mismatch. Shown below are the interfaces for our Data Access layer, which defines all interactions with our database.
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize
+]{js}
+export interface ICrudController {
+  tableName: () => string;
+  connect: () => Promise<void>;
+  disconnect: () => Promise<void>;
+  create: (columns: any, conditions: any, escaped: any[]) => Promise<QueryResult>;
+  createInTable: (
+    columns: any,
+    table: any,
+    conditions: any,
+    escaped: any[]
+  ) => Promise<QueryResult>;
+  read: (columns: string, conditions: string, escaped: any[]) => Promise<QueryResult>;
+  readById: (escaped: any) => Promise<QueryResult>;
+  readByUsername: (username: any) => Promise<QueryResult>;
+  readInTable: (columns: any, table: any, conditions: any, escaped: any[]) => Promise<QueryResult>;
+  update: (columns: any, conditions: any, escaped: any[]) => Promise<QueryResult>;
+  // tslint:disable-next-line:no-reserved-keywords
+  delete: (conditions: any, escaped: any[]) => Promise<QueryResult>;
+  deleteById: (escaped: any[]) => Promise<QueryResult>;
+  deleteInTable: (table: any, conditions: any, escaped: any[]) => Promise<QueryResult>;
+}
+
+export interface IPostgresController extends ICrudController {
+  splitObjectKeyVals: (obj: any) => any;
+  buildQueryByID: (key: string, value: string) => string;
+  buildUpdateString: (keys: any) => any;
+}
+\end{minted}
+
+The following code is the refactored version of a very large chain of requests from the original application. It contains a lot of logic and even now, it takes a while to understand. The original code however, was nested six layers deep and was incredibly difficult to read. This code is objectively easier to reason about and understand.
+
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize
+]{js}
+try {
+  const batchResponse = await this.$http.get(`${process.env.API}/batches`);
+  const tanksResponse = await this.$http.get(`${process.env.API}/tanks`);
+  const tasksResponse = await this.$http.get(`${process.env.API}/tasks`);
+  const actionsResponse = await this.$http.get(`${process.env.API}/actions`);
+  const recipeResponse = await this.$http.get(`${process.env.API}/recipes`);
+  for (const tankInfo of tanksResponse.data) {
+    // create a temporary tank for us to fill with data
+    const tank: ITank = {
+      // keep track of tank id for searching
+      id: tankInfo.id,
+      // keep track of tank name for displaying
+      name: tankInfo.name,
+      status: tankInfo.status
+    };
+    for (const batch of batchResponse.data) {
+      // if our batches tankID matches our tankID
+      if (batch.tank_id === tank.id) {
+        tank.batch = {};
+        // add in our batchesID to the tank info box
+        tank.batch.id = batch.id;
+        tank.batch.name = batch.name;
+        // add the recipeID to the tank info box
+        tank.recipe_id = batch.recipe_id;
+      }
+    }
+    for (const recipeHistory of recipeResponse.data) {
+      if (tank.recipe_id === recipeHistory.id) {
+        tank.airplane_code = recipeHistory.airplane_code;
+      }
+    }
+    if (tank.batch) {
+      const versionsResponse = await this.$http.get(
+        `${process.env.API}/versions/batch/${tank.batch.id}`
+      );
+      // keep track of most recent date with a starting low value
+      let max = moment('1995-07-29');
+      // for every data point we have in a batch
+      for (const batchHistory of versionsResponse.data) {
+        // if the date is the largest, it is the most recent one
+        if (moment(batchHistory.updated_at) > max) {
+          max = moment(batchHistory.updated_at);
+          tank.pressure = batchHistory.pressure;
+          tank.temperature = batchHistory.temperature;
+        }
+      }
+      // find task associated with tank
+      for (const task of tasksResponse.data) {
+        if (tank.batch.id === task.batch_id) {
+          // if task has our batch id
+          tank.action_id = task.action_id; // save the asscoiated action
+        }
+      }
+    }
+    // find action associated with task
+    for (const action of actionsResponse.data) {
+      if (tank.action_id === action.id) {
+        tank.action = action.name;
+        tank.action_id = `action${action.id}`;
+      }
+    }
+    // push data holder to the tanks array
+    this.tanks.push(tank);
+  }
+  this.tanks.sort(this.sortTanks);
+\end{minted}
+
+% bibliography
+\nocite{*}%if nothing is referenced it will still show up in refs
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+%end bibliography
+
+\end{document}

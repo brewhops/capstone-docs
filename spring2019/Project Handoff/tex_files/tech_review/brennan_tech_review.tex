@@ -1,0 +1,180 @@
+
+\section{Introduction}
+
+The application being built is for Ninkasi.  Currently, Ninkasi keeps all of their data in an excel spreadsheet; this gets passed around among different people who enter different bits of data from paper forms.  This is a very ineffective way to store such valuable information.  It restricts who can see the data, as well as who knows if they are looking at current data.  This method is also heavily prone to error as entries can be easily changed by accident without any knowledge of this occurring.  There is no history feature to keep track of edits, neither their changes or authors.  A solution to solve this has already begun in the form of a web app, however it was left in an unfinished state.  All data needs to be manually input through the forms of the website.  This creates a blocking point for inputting historical data as it is in the tens of thousands of data points.  The core functionality of the application already exists, but it needs to be re-factored to become usable.  Additionally, extra quality of life features need to be added and the application needs to be polished for a production environment.
+
+The team, BrewHops, has decided that all of our teammates will be familiar with the entire application, we are all full-stack developers.  However, we have split the technologies for the propose of the tech reviews.  This tech review focuses on the back-end aspects of the application.  The sections will build off of the previous, based on the conclusion reached for the former technology.  This helps limit the scope of the technologies to choose from, otherwise the number of technologies would be overwhelming.  First, the format of data in the database in needs to be determined.  This involves discussions of how structured it needs to be, the convince of development, and the support for the style.  From there, databases that support that type of format will be researched and compared to make the best decision.  Finally, the best archival solution will be determined for Ninkasi given the recommended database.
+
+\section{Data Model}
+
+    \subsection{Introduction}
+    
+    The way that data is modeled is very important to an application.  It defines how the different query behavior will be implemented and which aspects of the application will be easier or harder to implment.  There are two main categories of data modeling that are revelvant to look at: SQL, and NoSQL.  SQL has been the standard for a long time, however with issues of scale at the much larger tech companies NoSQL formats have been created \cite{sqlizer}.
+    
+    \subsection{NoSQL}
+    
+        \subsubsection{Summary}
+        
+        There are many different types of NoSQL data models.  This is because NoSQL is equivalent to the phrase non-relational data bases, "not SQL".  NoSQL models are primary designed around being very fast at scale for their particular use case.  The various different types include: key-value pairs, document, and graph \cite{amazon_nosql}.  The most common type is the document class of NoSQL models.  In these, entries are just JSON objects, meaning they can be easily spread out across multiple different machines to horizontally scale the database.  Out of all the different forms of the NoSQL data models this class, the document style, would be the most appropriate for our use case.  This is because we have a few main entities that could be represented as separate documents.  Each of these documents would then contain very piece of information they need, rather than being normalized across many different tables.
+        
+        \subsubsection{Pros}
+        
+        \begin{itemize}
+            \item Horizontally scalable
+            \item Quick development
+            \item Simple queries
+            \item No dedicated database server required (depending on database engine)
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        
+        \begin{itemize}
+            \item Deep models
+            \item Data replication
+            \item Large query responses
+        \end{itemize}
+    
+    \subsection{SQL}
+    
+        \subsubsection{Summary}
+        
+        As mentioned previously SQL is the oldest of the database models.  It has been around for over 40 years \cite{sqlizer}.  It allows the data to be normalized across many different tables reducing data replication.  It also has far more support than other technologies due to its ubiquity.  It would also allow for more precise query calls to be made retrieving only the information that is required from the database.  This last point is key as our application is targeting mobile devices where networking are a limiting factor.
+        
+        \subsubsection{Pros}
+        \begin{itemize}
+            \item No data replication
+            \item Precise queries
+            \item Ubiquitous support
+            \item Data integreity
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        \begin{itemize}
+            \item Structured (sometimes overly so)
+            \item Dedicated database server required
+            \item Slow development
+        \end{itemize}
+    
+    \subsection{Conclusion}
+
+    In conclusion, simply due to the support available, SQL is the best choice.  Ninkasi should have the highest number of options available to them when it comes to choosing their environment, this SQL provides.  A large factor is also the data integrity.  These SQL engines have been being used for decades, they are well and thoroughly tested.  Ninkasi can be assured that their data will not be lost or corrupted.
+
+\section{Databases}
+
+    \subsection{Introduction}
+    
+    Now that the data model has been chosen, different database engines can be looked into.  There are a few different options that are standard when wanting to work with SQL: PostgreSQL, MySQL, SQL Server.  This vary very little in their syntax and functions as they have all been copying each other for a long time.  There are categories which they differ in, most notably if they are free or not.  This is important for small projects as it is hard to justify spending money on something that has very few benefits over another.  Especially when it is well supported and free to use.
+    
+    \subsection{PostgreSQL}
+    
+        \subsubsection{Summary}
+        
+        PostgreSQL is a powerful open source SQL database engine \cite{postgresql}.  It has the same query syntax as the other open source SQL database engines out there.  However, it also has strong support for some very NoSQL like features.  This allows the advantages of SQL and NoSQL to be combined from the model viewpoint.  Though, it cannot capture the scalability advantages of the different NoSQL systems as it is NoSQL within a SQL database.
+        
+        \subsubsection{Pros}
+        \begin{itemize}
+            \item Open source
+            \item Free
+            \item NoSQL features
+            \item Runs on almost anything \cite{db_comparison}
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        \begin{itemize}
+            \item Not the most popular
+            \item Not the same level of support as MySQL
+        \end{itemize}
+    
+    \subsection{MySQL}
+    
+        \subsubsection{Summary}
+        
+        MySQL is another powerful open source database management system.  It is more popular that PostgreSQL, yet actually has fewer features \cite{db_comparison}.  MySQL stands in a funny spot within the open source line up, it has been acquired by Oracle \cite{mysql}.  This makes some in the community unsure of its future longevity as a free and open piece of software.  This is due to it directly competing with one of Oracle's main paid offerings.  However, MySQL is often the go to open source SQL database management system, especially for small projects.
+        
+        \subsubsection{Pros}
+        \begin{itemize}
+            \item Popular
+            \item Highest level of third-party support
+            \item Open source
+            \item Free
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        \begin{itemize}
+            \item Not as many features as PostgreSQL
+            \item Rudimentary NoSQL support
+        \end{itemize}
+        
+    \subsection{SQL Server}
+    
+        \subsubsection{Summary}
+        
+        SQL Server is Microsoft's SQL database management system.  It is a commercial grade application, and comes with the price to prove it.  It does provide more advanced functionality than either MySQL or PostgreSQL, however these are features that are not needed by the application \cite{sql_server}.  There is no strong point for a discussion with Ninkasi to even be approached about buying a license for SQL Server.  Also, MySQL's and PostgreSQL's syntax is identical in almost all cases, this is not the true for SQL Server as it diverges in some subtle locations.
+        
+        \subsubsection{Pros}
+        \begin{itemize}
+            \item Advanced functions
+            \item Best performance
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        \begin{itemize}
+            \item Cost
+            \item Commercial
+            \item Different syntax
+        \end{itemize}
+    
+    \subsection{Conclusion}
+
+    In conclusion, PostgreSQL provides the application with the most flexibility and support.  It will can on anything that Ninkasi could ever want, and has a large community of support and third-party interfaces ready to be used.  SQL Server is too much for this project as it does not have the complexity or amount of data where its features and performance benefit over MySQL or PostgreSQL.  It is also important to keep the cost of the system to a minimum for Ninkasi as this is replacing a currently free process.
+
+\section{Archival Process}
+
+    \subsection{Introduction}
+    
+    It is important to make sure that Ninkasi never loses any of the data they store in the application.  So, a database archival process will be implmented.  This allows them to restore or role back their data to a previous time if they ever need to.  "Database archiving is the process of intelligently moving historical data from production environments to an archive environment, freeing up IT storage space and other resources" \cite{ibm_archiving}.  As we have chosen PostrgreSQL as our database management system only archival solutions for that platform will be focused on.  Key factors that are under consideration for an archival process are: data integrity, consistent archiving, and minimized storage space.
+    
+    \subsection{PostgreSQL WAL}
+    
+        \subsubsection{Summary}
+        
+        PostgreSQL's write ahead log, WAL, is the log file where it stores every operation done to the database along with the time at which it happened \cite{postgresql_wal}.  This file was originally designed, and still used for, crash recovery where some of the command had yet to be completed at time of failure.  PostgreSQL simply rolls back to the last safe state and then replays the executions from the WAL.  The WAL is simply just a file that is stored on the file system, this means that it can be copied to a safe archival location.  If this is done on a regular process the entire database can be reconstructed from these files.  It provides another feature hidden in its time stamps on the queries, it allows for point-in-time recovery \cite{postgresql_wal}.  This means the database can be reconstructed up until any point in time the user would like, with no extra storage cost associated.
+        
+        \subsubsection{Pros}
+        \begin{itemize}
+            \item Continuous archiving
+            \item Point in time archiving
+            \item First-party support
+            \item Assured data integrity
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        \begin{itemize}
+            \item Must manually create scripts to copy the files
+            \item Special configuration setting must be turned on
+            \item Data isn't available until a database is built from the files
+        \end{itemize}
+    
+    \subsection{Manual Archival Scripts}
+    
+        \subsubsection{Summary}
+        
+        Manual archival scripts refers to the process of manually writing archival queries that transfer specific data to the archive location.  This would require a lot of manual work to figure out what needs to be saved, the difference between the current database and the archive database, and the expense cost of needing to run this while the database is trying to function for the application.  This is inherently error prone as it is only supported by the developers of the application.  Therefore, it would need to be updated with any updates to the database.  This provides another point of failure.
+        
+        \subsubsection{Pros}
+        \begin{itemize}
+            \item Only copies and stores data that cannot be replaced
+            \item Data will be stored in another database that can be queried
+        \end{itemize}
+        
+        \subsubsection{Cons}
+        \begin{itemize}
+            \item Higher potential for loss of data due to human error
+            \item Manually intensive
+            \item Not maintainable
+        \end{itemize}
+    
+    \subsection{Conclusion}
+    
+    The choice is pretty simple given that there are not many options, PostgreSQL's WAL archival process.  This provides the most features right out of the box and will require the least manual work to getting moving.  It also has the promise of strong data integrity which is a key aspect of archiving.
+
